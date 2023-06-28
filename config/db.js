@@ -5,5 +5,5 @@ const mongoose = require('mongoose');
 
 const DB = 'mongodb+srv://shakyanischal:shakya@cluster0.kfqbaqo.mongodb.net/jobportal?retryWrites=true&w=majority'
 mongoose.connect(DB).then(()=>{
-  console.log(`connection successful`);
-}).catch((err)=> console.log(`connection error`));
+  console.log(`DB connection successful`);
+}).catch((err)=> console.log(`DB connection error`));
