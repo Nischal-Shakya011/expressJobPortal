@@ -7,6 +7,7 @@ const job_routes = require('./routes/job_routes')
 const apply_routes = require('./routes/apply_routes')
 
 const { handleResourceNotFound, handleServerError} = require('./middleware/handleError')
+const {arrayImage} = require('./middleware/images')
 
 require('./config/db')
 require('dotenv').config()
@@ -15,34 +16,7 @@ app.use(fileUpload()); //for files
 app.use(express.static('uploads'))
 
 
-//custom middleware for making array of images even if only one image is passed
-app.use((req, res, next) => {
-
-    function changeRequest(field) {
-
-        let temp = {};
-
-        if (req[field]) {
-            let temp_arr = Object.entries(req[field])
-
-            temp_arr.forEach(el => {
-                if (el[0].endsWith("[]")) {
-                    temp[el[0].slice(0, -2)] = Array.isArray(el[1]) ? el[1] : [el[1]]
-                } else {
-                    temp[el[0]] = el[1]
-                }
-            })
-        }
-
-        req[field] = temp
-    }
-
-    changeRequest("body")
-    changeRequest("files")
-
-    next()
-
-})
+app.use(arrayImage)
 
 
 app.use('/', auth_routes)
