@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const cors = require('cors')
 const fileUpload = require('express-fileupload')
 
 const auth_routes = require('./routes/auth')
@@ -14,14 +15,16 @@ require('dotenv').config()
 app.use(express.json()) //for normal data
 app.use(fileUpload()); //for files
 app.use(express.static('uploads'))
+app.use(cors())
+
 
 
 app.use(arrayImage)
 
 
-app.use('/', auth_routes)
-app.use('/jobs', job_routes)
-app.use('/apply', apply_routes)
+app.use('/api', auth_routes)
+app.use('/api/jobs', job_routes)
+app.use('/api/apply', apply_routes)
 
 app.use(handleResourceNotFound)
 app.use(handleServerError)
