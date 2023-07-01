@@ -16,7 +16,9 @@ const get = async (req, res, next)=>{
 
         let search_term = req.query.search_term || ""
         let page = parseInt(req.query.page) || 1
-        let per_page = parseInt(req.query.per_page) || 2
+        let per_page = parseInt(req.query.per_page) || 5
+
+      
 
         let total = await Job.aggregate(
             [
@@ -184,34 +186,8 @@ const fetchSingleJOb = async (req, res, next)=>{
     }
 }
 
-// const fetchJobStatus = async (req, res, next)=>{
-
-//     try{
-   
-        
-//         let activeJobs = await Job.find({"status" : "active"});
-//         // console.log(activeJobs);
-//             let expiredJobs = await Job.find({"status" : "inactive"});
-          
-//             let activeCount = activeJobs.length;
-//             let expiredCount = expiredJobs.length;
-          
-//             res.send({
-//                      active: activeCount,
-//                      expired: expiredCount 
-//                     });
-//           }
-          
-
-    
-    // catch(err){
-    //   next(err)
-    // }
-// }
-
 module.exports = {
     createJob,
     get,
     fetchSingleJOb
-    // fetchJobStatus
 }
