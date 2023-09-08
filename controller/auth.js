@@ -25,8 +25,17 @@ const signup = async (req, res, next) => {
         // console.log("errors", error?.details)
 
         if (error?.details) {
+            let errors = error?.details.map(err => {
+                return{
+             params : err.path,
+             msg : err.message
+                 }
+         
+                })
+          
             res.status(400).send({
-                errors: error?.details
+                // errors: error?.details
+                errors
             })
             return;
         }
