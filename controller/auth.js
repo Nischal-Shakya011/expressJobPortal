@@ -73,12 +73,28 @@ const login = async (req, res, next) => {
           })
 
 
-      if (error?.details) {
-          res.status(400).send({
-              errors: error?.details
-          })
-          return;
-      }
+    //   if (error?.details) {
+    //       res.status(400).send({
+    //           errors: error?.details
+    //       })
+    //       return;
+    //   }
+
+    if (error?.details) {
+        let errors = error?.details.map(err => {
+            return{
+         params : err.path,
+         msg : err.message
+             }
+     
+            })
+      
+        res.status(400).send({
+            // errors: error?.details
+            errors
+        })
+        return;
+    }
 
 
       let user = await User.findOne({ email: req.body.email }).select("+password")
