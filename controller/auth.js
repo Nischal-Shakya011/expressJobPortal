@@ -121,7 +121,7 @@ const login = async (req, res, next) => {
       }
 
       res.status(401).send({
-          msg: "Invalid Credentaions"
+          msg: "Invalid Credentials"
       })
 
   }
