@@ -51,7 +51,7 @@ const JobSchema = new Schema({
 
     deadline : {
         type : Date,
-        // required : true
+        required : true
     },
 
     status : {

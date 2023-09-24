@@ -126,6 +126,9 @@ const login = async (req, res, next) => {
       })
 
   }
+
+  
+
   catch (err) {
       next(err)
   }
@@ -133,7 +136,19 @@ const login = async (req, res, next) => {
 
 }
 
+let getUser = async (req, res, next)=>{
+    try{
+let userDetail = await User.find({_id : req.user._id})
+res.send(userDetail)
+    }
+    catch(err)
+    {
+        next(err)
+    }
+}
+
 module.exports = {
   signup,
-  login
+  login,
+  getUser
 }
