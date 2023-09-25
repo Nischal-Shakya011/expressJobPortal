@@ -111,6 +111,16 @@ const get = async (req, res, next)=>{
         next(err);
     }
 }
+const getPostedjobs = async (req, res, next)=>{
+    try{
+const userJobs = await Job.find({ created_by: req.user._id });
+
+res.send(userJobs);
+} 
+catch (err) {
+next(err);
+}
+}
 
 
 
@@ -189,5 +199,6 @@ const fetchSingleJOb = async (req, res, next)=>{
 module.exports = {
     createJob,
     get,
-    fetchSingleJOb
+    fetchSingleJOb,
+    getPostedjobs
 }
