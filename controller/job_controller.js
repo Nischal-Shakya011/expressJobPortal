@@ -5,6 +5,7 @@ const path = require("path")
 
 const get = async (req, res, next)=>{
     try{
+       
 
             let activeJobs = await Job.find({"status" : "active"});
             let expiredJobs = await Job.find({"status" : "inactive"});
@@ -95,6 +96,15 @@ const get = async (req, res, next)=>{
                 },
             ]
         )
+        // let query = {}
+        // if (req.user) {
+        //     // const userId = req.user._id;
+        //     query.created_by = req.user._id;
+        
+    
+        // let userJobs = await Job.find(query);
+        //     // userJobs = await Job.find({ "created_by": req.user._id });
+        // } 
 
         res.send({
             meta_data: {
@@ -104,7 +114,8 @@ const get = async (req, res, next)=>{
             },
             jobs: jobs,
             active: activeCount,
-            expired: expiredCount 
+            expired: expiredCount,
+            // user_Jobs : userJobs
         })
     }
     catch(err){
