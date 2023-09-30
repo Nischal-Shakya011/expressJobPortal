@@ -14,6 +14,20 @@ const JobSchema = new Schema({
         required: true,
         maxlength: 30
     },
+    company_name: {
+        type: String,
+        required: true,
+        maxlength: 30
+    },
+    company_website: {
+        type: String,
+        required: true,
+        maxlength: 30
+    },
+    contact_no: {
+        type: Number,
+        required: true,
+    },
     categories:{
         type: [String],
         required: true,
