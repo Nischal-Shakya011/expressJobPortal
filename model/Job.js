@@ -55,17 +55,19 @@ const JobSchema = new Schema({
 
     location: {
         type: String,
-        max: 30
+        max: 30,
+        required: true
     },
 
     offered_salary : {
         type : Number,
-        min : 0
+        min : 0,
+        required : true
     },
 
     deadline : {
         type : Date,
-        required : true
+        required: true
     },
 
     status : {
@@ -90,7 +92,8 @@ const JobSchema = new Schema({
         },
 
         description: {
-                type: String
+                type: String,
+                required : true
             },
 
             images: {
