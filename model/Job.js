@@ -69,6 +69,10 @@ const JobSchema = new Schema({
         type : Date,
         required: true
     },
+    application_start : {
+        type : Date,
+        required: true
+    },
 
     status : {
        type: String,
