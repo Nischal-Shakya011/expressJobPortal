@@ -82,13 +82,13 @@ const JobSchema = new Schema({
       }
     },
 
-    job_type : {
-        type: String,
-        enum : [TOP, HOT, FEATURED, NORMAL],
-        set: function (value) {
-            return value.toLowerCase();
-        }
-    },
+    // job_type : {
+    //     type: String,
+    //     enum : [TOP, HOT, FEATURED, NORMAL],
+    //     set: function (value) {
+    //         return value.toLowerCase();
+    //     }
+    // },
     created_by: {
             required: true,
             type: ObjectId,
