@@ -41,7 +41,7 @@ const JobSchema = new Schema({
     },
     job_level:{
         type: String,
-        // required: true,
+        required: true,
         enum : [FRESHER, JUNIOR, MID, SENIOR],
         set: function (value) {
             return value.toLowerCase();
