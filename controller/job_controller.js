@@ -207,9 +207,35 @@ const fetchSingleJOb = async (req, res, next)=>{
     }
 }
 
+const editJob = async (req, res, next) => {
+    const jobId = req.params.id;
+    const updatedData = req.body;
+  
+    try {
+      // Check if the job with the given ID exists
+      const existingJob = await Job.findById(jobId);
+  
+      if (!existingJob) {
+        return res.status(404).send({ message: 'Job not found' });
+      }
+  
+      // Update the job data
+      Object.assign(existingJob, updatedData);
+  
+      // Save the updated job
+      const updatedJob = await existingJob.save();
+  
+      return res.send(updatedJob);
+    } 
+    catch (error) {
+      next(error);
+    }
+  };
+
 module.exports = {
     createJob,
     get,
     fetchSingleJOb,
-    getPostedjobs
+    getPostedjobs, 
+    editJob
 }
