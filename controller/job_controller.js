@@ -207,6 +207,26 @@ const fetchSingleJOb = async (req, res, next)=>{
     }
 }
 
+const deleteJob = async (req, res, next) =>{
+    const jobId = req.params.id;
+
+  try {
+    const job = await Job.findByIdAndRemove(jobId);
+
+    if (!job) {
+      return res.status(404).json({ message: 'Job not found' });
+    }
+
+    return res.json({ message: 'Job deleted successfully' });
+  }
+   catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: 'Internal Server Error' });
+  }
+};
+
+
+
 const editJob = async (req, res, next) => {
     const jobId = req.params.id;
     const updatedData = req.body;
@@ -237,5 +257,6 @@ module.exports = {
     get,
     fetchSingleJOb,
     getPostedjobs, 
-    editJob
+    editJob,
+    deleteJob
 }
