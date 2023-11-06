@@ -220,8 +220,7 @@ const deleteJob = async (req, res, next) =>{
     return res.json({ message: 'Job deleted successfully' });
   }
    catch (error) {
-    console.error(error);
-    return res.status(500).json({ message: 'Internal Server Error' });
+next(err)
   }
 };
 
