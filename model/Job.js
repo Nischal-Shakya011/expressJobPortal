@@ -104,8 +104,6 @@ const JobSchema = new Schema({
                     type: [String],
                 },
 
-                applications: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Apply' }],
-
 
 },{
     timestamps: true,
