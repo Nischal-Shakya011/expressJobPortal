@@ -1,5 +1,6 @@
 const Job = require('../model/Job')
 const Apply = require('../model/Apply')
+const mongoose = require('mongoose');
 
 let getApply = async (req, res, next)=>{
     try{
@@ -42,9 +43,31 @@ let createApplyJob = await Apply.create({ jobs: appliedJobs, created_by: req.use
         next(err)
     }
 }
+
+    let getApplicantsForJob = async (req, res, next) => {
+        try {
+          const jobId = req.params.id;
+
+    
+          const job = await Job.findById(jobId);
+          if (!job) {
+            return res.status(404).json({ message: 'Job not found' });
+          }
+      
+          const applicants = await Apply.find({ 'jobs.job_id': jobId })
+            .populate('created_by', 'name email'); 
+      
+          res.json({applicants});
+        } catch (error) {
+          next(error);
+        }
+      };
+
+
 module.exports =
 {
     createApply,
     getApply,
-    fetchSingleApply
+    fetchSingleApply,
+    getApplicantsForJob
 }
