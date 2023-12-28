@@ -42,7 +42,7 @@ const signup = async (req, res, next) => {
 
         let hashed = await bcrypt.hash(req.body.password, 10);
 
-        let user = await User.create({ ...req.body, password: hashed })
+        let user = await User.create({ ...req.body, password: hashed,})
 
         user = user.toObject()
         delete user.password

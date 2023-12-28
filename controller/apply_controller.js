@@ -1,6 +1,5 @@
 const Job = require('../model/Job')
 const Apply = require('../model/Apply')
-const mongoose = require('mongoose');
 
 let getApply = async (req, res, next)=>{
     try{
@@ -55,7 +54,16 @@ let createApplyJob = await Apply.create({ jobs: appliedJobs, created_by: req.use
           }
       
           const applicants = await Apply.find({ 'jobs.job_id': jobId })
-            .populate('created_by', 'name email'); 
+            .populate('created_by', 'name email role contact address prefered_job degree field_of_study university position organization job_level roles experience skills')
+            // .populate({
+            //   path: 'created_by',
+            //   select: 'name email ', // Assuming you have a 'profile' field in the User model
+            // })
+            // .populate({
+            //   path: 'created_by.profile',
+            //   model: 'Profile',
+            //   select: 'name email contact_no address',
+            // });
       
           res.json({applicants});
         } catch (error) {

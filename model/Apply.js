@@ -46,7 +46,8 @@ const ApplySchema = new Schema({
         type: ObjectId,
         ref: "User",
         required: true,
-    }
+    },
+   
 }, {
     timestamps: true,
 });
