@@ -47,6 +47,11 @@ const ApplySchema = new Schema({
         ref: "User",
         required: true,
     },
+    profile: {
+        type: ObjectId,
+        ref: "Profile",
+        required: true,
+    },
    
 }, {
     timestamps: true,

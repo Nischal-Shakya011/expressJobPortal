@@ -25,6 +25,45 @@ const ProfileSchema = new Schema({
         max: 30,
         required: true
     },
+    prefered_job: {
+        type: String,
+      },
+
+      degree: {
+        type: String,
+      },
+
+      field_of_study: {
+        type: String,
+      },
+
+      university: {
+        type: String,
+      },
+
+      position: {
+        type: String,
+      },
+
+      organization: {
+        type: String,
+      },
+
+      job_level: {
+        type: String,
+      },
+
+      roles: {
+        type: String,
+      },
+
+      experience: {
+        type: String,
+      },
+      
+      skills: {
+        type: String,
+      },
    
     created_by: {
             required: true,

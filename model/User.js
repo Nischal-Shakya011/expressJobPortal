@@ -39,43 +39,7 @@ const UserSchema = new Schema({
             return value.toLowerCase();
         }
     },
-    contact: {
-        type: String,
-      },
-
-      address: {
-        type: String,
-      },
-      prefered_job: {
-        type: String,
-      },
-      degree: {
-        type: String,
-      },
-      field_of_study: {
-        type: String,
-      },
-      university: {
-        type: String,
-      },
-      position: {
-        type: String,
-      },
-      organization: {
-        type: String,
-      },
-      job_level: {
-        type: String,
-      },
-      roles: {
-        type: String,
-      },
-      experience: {
-        type: String,
-      },
-      skills: {
-        type: String,
-      },
+     
 }, {
     timestamps: true,
 });

@@ -1,4 +1,5 @@
 const Job = require('../model/Job')
+const Profile = require('../model/Profile')
 const Apply = require('../model/Apply')
 
 let getApply = async (req, res, next)=>{
@@ -34,7 +35,8 @@ for(job of req.body.jobs){
     )
 
 }
-let createApplyJob = await Apply.create({ jobs: appliedJobs, created_by: req.user._id })
+let prof = await Profile.findOne({created_by: req.user._id})
+let createApplyJob = await Apply.create({ jobs: appliedJobs, created_by: req.user._id, profile: prof._id})
   res.send(createApplyJob)
 
     }
@@ -54,16 +56,9 @@ let createApplyJob = await Apply.create({ jobs: appliedJobs, created_by: req.use
           }
       
           const applicants = await Apply.find({ 'jobs.job_id': jobId })
-            .populate('created_by', 'name email role contact address prefered_job degree field_of_study university position organization job_level roles experience skills')
-            // .populate({
-            //   path: 'created_by',
-            //   select: 'name email ', // Assuming you have a 'profile' field in the User model
-            // })
-            // .populate({
-            //   path: 'created_by.profile',
-            //   model: 'Profile',
-            //   select: 'name email contact_no address',
-            // });
+            // .populate('created_by', 'name email role contact address prefered_job degree field_of_study university position organization job_level roles experience skills')
+            .populate('profile', 'name email address')
+         
       
           res.json({applicants});
         } catch (error) {
