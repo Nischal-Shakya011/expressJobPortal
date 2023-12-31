@@ -27,18 +27,26 @@ const ProfileSchema = new Schema({
     },
     prefered_job: {
         type: String,
+        required: true,
+
       },
 
       degree: {
         type: String,
+        required: true,
+        
       },
 
       field_of_study: {
         type: String,
+        required: true,
+
       },
 
       university: {
         type: String,
+        required: true,
+
       },
 
       position: {
@@ -63,6 +71,7 @@ const ProfileSchema = new Schema({
       
       skills: {
         type: String,
+        required: true,
       },
    
     created_by: {
