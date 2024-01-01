@@ -46,7 +46,7 @@ const signup = async (req, res, next) => {
 
         user = user.toObject()
         delete user.password
-        let token = jwt.sign(userObj, process.env.JWT_SECRET_KEY);
+        let token = jwt.sign(user, process.env.JWT_SECRET_KEY);
 
         res.send({
             user,
