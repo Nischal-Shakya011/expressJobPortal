@@ -16,7 +16,7 @@ const ProfileSchema = new Schema({
     },
    
     contact_no: {
-        type: Number,
+        type: String,
         required: true,
     },
 
