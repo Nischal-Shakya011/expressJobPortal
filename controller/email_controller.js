@@ -16,7 +16,7 @@ const transporter = nodemailer.createTransport({
 
   const sendEmail = expressAsyncHandler(async(req, res)=>{
     const { email, subject, message } = req.body;
-    // console.log(email, subject, message);
+    console.log(email, subject, message);
     var mailOptions = {
         from: process.env.SMTP_MAIL,
         to: email,
