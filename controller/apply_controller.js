@@ -59,7 +59,7 @@ let createApplyJob = await Apply.create({ jobs: appliedJobs, created_by: req.use
             // .populate('created_by', 'name email role contact address prefered_job degree field_of_study university position organization job_level roles experience skills')
             .populate('profile', 'name email contact_no address prefered_job degree field_of_study university position organization job_level roles experience skills')
          
-      
+
           res.json({applicants});
         } catch (error) {
           next(error);
