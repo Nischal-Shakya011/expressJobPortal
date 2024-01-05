@@ -21,7 +21,8 @@ const transporter = nodemailer.createTransport({
         from: process.env.SMTP_MAIL,
         to: email,
         subject: subject,
-        message: message,
+        // html : `<h1>${message}</h1>`
+        html : `<p>${message}</p>`
     };
     transporter.sendMail(mailOptions, function(error, info){
         if(error){
