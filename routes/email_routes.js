@@ -1,10 +1,10 @@
 const express = require('express')
 const router = express.Router()
 
-const {sendEmail} = require('../controller/email_controller')
+const {sendAcceptEmail, sendRejectEmail} = require('../controller/email_controller')
 const{ authenticationCheck, isSeeker, isCompany} = require('../middleware/authenticationCheck')
 
-router.post("/",authenticationCheck, sendEmail) 
-
+router.post("/accept",authenticationCheck, sendAcceptEmail) 
+router.post("/reject",authenticationCheck, sendRejectEmail) 
 
 module.exports = router
