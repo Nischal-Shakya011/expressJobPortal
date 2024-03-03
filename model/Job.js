@@ -31,13 +31,13 @@ const JobSchema = new Schema({
     categories:{
         type: [String],
         required: true,
-        enum : [FRONTEND, BACKEND],
-        set: function (value) {
-           let category =  value.map((cat)=>{
-                return cat.toLowerCase();
-            })
-            return category;    
-    }
+        // enum : [FRONTEND, BACKEND],
+        // set: function (value) {
+        //    let category =  value.map((cat)=>{
+        //         return cat.toLowerCase();
+        //     })
+        //     return category;    
+    // }
     },
     job_level:{
         type: String,
