@@ -35,7 +35,7 @@ function calculateJobRecommendations(profile, allJobs) {
   // Sort jobs by similarity and recommend the top 3
   const topNJobs = jobRecommendations
     .sort((a, b) => b.similarity - a.similarity)
-    .slice(0, 6)
+    .slice(0, 9)
     .map(item => item.job);
 
   return topNJobs;
