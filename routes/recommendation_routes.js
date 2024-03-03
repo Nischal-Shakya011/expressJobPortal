@@ -4,7 +4,7 @@ const router = express.Router()
 const {recommendation} = require('../controller/recommendation_controller')
 const{ authenticationCheck, isSeeker} = require('../middleware/authenticationCheck')
 
-router.get("/:id",authenticationCheck, recommendation) 
+router.get("/",authenticationCheck, isSeeker, recommendation) 
 
 
 module.exports = router

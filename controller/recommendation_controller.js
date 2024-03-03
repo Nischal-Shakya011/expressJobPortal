@@ -4,10 +4,10 @@ const Profile = require('../model/Profile')
 let recommendation = async(req, res, next)=>{
     try{
 
-    const userId = req.params.id;
+    // const userId = req.params.id;
     
     // Fetch profile profile from the database
-    const profile = await Profile.findOne({created_by: userId});
+    const profile = await Profile.findOne({created_by: req.user._id});
     if (!profile) {
       return res.status(404).json({ message: 'profile not found' });
     }
@@ -67,7 +67,7 @@ function calculateCosineSimilarity(vector1, vector2) {
 //   const magnitude1 = Math.sqrt(vector1.category.length + vector1.jobLevel.length);
 //   const magnitude2 = Math.sqrt(vector2.category.length + vector2.jobLevel.length);
 
-  const dotProduct = vector1.category === vector2.category ? 1 : 0;
+  const dotProduct = vector1.category.toLowerCase() === vector2.category.toLowerCase() ? 1 : 0;
   const magnitude1 = Math.sqrt(vector1.category.length );
   const magnitude2 = Math.sqrt(vector2.category.length);
 
