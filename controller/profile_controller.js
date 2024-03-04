@@ -13,6 +13,19 @@ const createProfile = async (req, res, next) => {
         next(err)
     }
 }
+
+const getProfile = async (req, res, next) => {
+    try {
+  
+
+    let user = await Profile.findOne({created_by: req.user._id})
+        res.send(user)
+    } 
+    
+    catch (err) {
+        next(err)
+    }
+}
 module.exports ={
-    createProfile
+    createProfile, getProfile
 }
