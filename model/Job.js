@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 const ObjectId = Schema.ObjectId;
 
 const {FRONTEND, BACKEND} = require('../constants/category')
-const {FRESHER, JUNIOR, MID, SENIOR} = require('../constants/job_level')
+const {INTERN, FRESHER, JUNIOR, MID, SENIOR} = require('../constants/job_level')
 const { TOP, HOT, FEATURED, NORMAL} = require('../constants/job_type')
 const { ACTIVE, INACTIVE} = require('../constants/job_status')
 
@@ -42,7 +42,7 @@ const JobSchema = new Schema({
     job_level:{
         type: String,
         required: true,
-        enum : [FRESHER, JUNIOR, MID, SENIOR],
+        enum : [FRESHER, JUNIOR, MID, SENIOR, INTERN],
         set: function (value) {
             return value.toLowerCase();
         }

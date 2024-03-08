@@ -16,6 +16,7 @@ const get = async (req, res, next)=>{
          
 
         let search_term = req.query.search_term || ""
+        let job_level = req.query.job_level || ""
         let page = parseInt(req.query.page) || 1
         let per_page = parseInt(req.query.per_page) || 5
 
@@ -23,11 +24,19 @@ const get = async (req, res, next)=>{
 
         let total = await Job.aggregate(
             [
+                // {
+                //     $match: {
+                //         $or: [
+                //             { name: RegExp(search_term, "i") },
+                //             { categories: RegExp(search_term, "i") }
+                //         ]
+                //     }
+                // },
                 {
                     $match: {
-                        $or: [
-                            { name: RegExp(search_term, "i") },
-                            { categories: RegExp(search_term, "i") }
+                        $and: [
+                            { $or: [{ name: RegExp(search_term, "i") }, { categories: RegExp(search_term, "i") }] },
+                            { job_level: RegExp(job_level, "i") }
                         ]
                     }
                 },
@@ -60,11 +69,19 @@ const get = async (req, res, next)=>{
         )
         let jobs = await Job.aggregate(
             [
+                // {
+                //     $match: {
+                //         $or: [
+                //             { name: RegExp(search_term, "i") },
+                //             { categories: RegExp(search_term, "i") }
+                //         ]
+                //     }
+                // },
                 {
                     $match: {
-                        $or: [
-                            { name: RegExp(search_term, "i") },
-                            { categories: RegExp(search_term, "i") }
+                        $and: [
+                            { $or: [{ name: RegExp(search_term, "i") }, { categories: RegExp(search_term, "i") }] },
+                            { job_level: RegExp(job_level, "i") }
                         ]
                     }
                 },
@@ -105,10 +122,11 @@ const get = async (req, res, next)=>{
         // let userJobs = await Job.find(query);
         //     // userJobs = await Job.find({ "created_by": req.user._id });
         // } 
-
+        const totalJobs = total?.[0]?.total || 0;
         res.send({
             meta_data: {
-                total: total[0].total,
+                // total: total[0].total,
+                total: totalJobs,
                 page,
                 per_page
             },
