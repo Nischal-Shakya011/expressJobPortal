@@ -64,5 +64,5 @@ const transporter = nodemailer.createTransport({
 
   module.exports = {
     sendAcceptEmail,
-    sendRejectEmail
+    sendRejectEmail,
   }

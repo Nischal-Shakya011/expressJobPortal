@@ -81,6 +81,9 @@ const JobSchema = new Schema({
        return value.toLowerCase();
       }
     },
+    experience : {
+        type: String
+    },
 
     // job_type : {
     //     type: String,
