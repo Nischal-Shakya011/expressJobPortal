@@ -35,7 +35,7 @@ const transporter = nodemailer.createTransport({
   });
 
   const sendRejectEmail = expressAsyncHandler(async(req, res)=>{
-    const { email } = req.body;
+    const { email, subject, message } = req.body;
     console.log(email, subject, message);
     var mailOptions = {
         from: process.env.SMTP_MAIL,
