@@ -22,7 +22,7 @@ const transporter = nodemailer.createTransport({
         to: email,
         subject: subject,
         // html : `<h1>${message}</h1>`
-        html : `<p>${message}</p>`
+        html : `<p>This is Link${message}</p>`
     };
     transporter.sendMail(mailOptions, function(error, info){
         if(error){
