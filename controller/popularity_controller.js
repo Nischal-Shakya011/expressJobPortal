@@ -70,7 +70,7 @@ const popularityRecommendation = async () => {
     // Sort jobs by the number of applications
     const popularJobs = allJobs
       .sort((a, b) => b.numApplications - a.numApplications)
-      .slice(0, 3);
+      .slice(0, 10);
 
     return popularJobs;
   } catch (err) {
