@@ -35,4 +35,4 @@ const TrainingSchema = new Schema({
     timestamps: true,
 });
 
-module.exports = mongoose.model('Training',TrainingSchema);
+module.exports = mongoose.model('Training', TrainingSchema);

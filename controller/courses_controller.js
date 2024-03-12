@@ -55,11 +55,25 @@ const createApplicants = async (req, res, next) => {
         next(err)
     }
 }
+const getApplicants = async (req, res, next) => {
+    try {
+  
+
+    let gettrain = await Training.find();
+        res.send(gettrain)
+    } 
+    
+    catch (err) {
+        console.log(err)
+        next(err)
+    }
+}
 
 
 module.exports ={
     createCourses,
     getCourses,
     fetchSingleCourse,
-    createApplicants
+    createApplicants,
+    getApplicants
 }
