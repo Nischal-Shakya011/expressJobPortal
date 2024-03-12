@@ -1,5 +1,6 @@
 const Joi = require("joi")
 const Course = require("../model/Course")
+const Training = require("../model/Training")
 
 const createCourses = async (req, res, next) => {
     try {   
@@ -44,10 +45,21 @@ const fetchSingleCourse = async (req, res, next)=>{
       next(err)
     }
 }
+const createApplicants = async (req, res, next) => {
+    try {   
+    let train = await Training.create({...req.body, created_by: req.user._id})
+        res.send(train)
+    } 
+    
+    catch (err) {
+        next(err)
+    }
+}
 
 
 module.exports ={
     createCourses,
     getCourses,
-    fetchSingleCourse
+    fetchSingleCourse,
+    createApplicants
 }
