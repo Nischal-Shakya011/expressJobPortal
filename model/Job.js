@@ -85,6 +85,11 @@ const JobSchema = new Schema({
         type: String
     },
 
+    numApplications: {
+        type: Number,
+        default: 0, 
+    },
+
     // job_type : {
     //     type: String,
     //     enum : [TOP, HOT, FEATURED, NORMAL],

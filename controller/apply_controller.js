@@ -33,7 +33,11 @@ for(job of req.body.jobs){
             offered_salary:dbJobs.offered_salary  
         }
     )
+  // Increment the numApplications field
+  dbJobs.numApplications += 1;
 
+  // Save the updated job with the incremented numApplications
+  await dbJobs.save();
 }
 let prof = await Profile.findOne({created_by: req.user._id})
 let createApplyJob = await Apply.create({ jobs: appliedJobs, created_by: req.user._id, profile: prof._id})
