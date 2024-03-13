@@ -46,7 +46,7 @@ function getprofilePreferences(profile) {
   // For simplicity, assuming profile preferences are based on job category and job level
   return {
     category: profile.prefered_job || '',
-    // jobLevel: profile.preferredJobLevel || '',
+    jobLevel: profile.job_level || '',
   };
 }
 
@@ -55,21 +55,20 @@ function getJobFeatures(job) {
   // For simplicity, using job category and job level as features
   return {
     category: job.categories[0] || '',
-    // jobLevel: job.jobLevel || '',
+    jobLevel: job.job_level || '',
   };
 }
 
 // Helper function to calculate cosine similarity
 function calculateCosineSimilarity(vector1, vector2) {
   // Simplified cosine similarity calculation
-  // You might want to implement a more robust solution based on your data
-//   const dotProduct = vector1.category === vector2.category && vector1.jobLevel === vector2.jobLevel ? 1 : 0;
-//   const magnitude1 = Math.sqrt(vector1.category.length + vector1.jobLevel.length);
-//   const magnitude2 = Math.sqrt(vector2.category.length + vector2.jobLevel.length);
+  const dotProduct = vector1.category === vector2.category && vector1.jobLevel === vector2.jobLevel ? 1 : 0;
+  const magnitude1 = Math.sqrt(vector1.category.length + vector1.jobLevel.length);
+  const magnitude2 = Math.sqrt(vector2.category.length + vector2.jobLevel.length);
 
-  const dotProduct = vector1.category.toLowerCase() === vector2.category.toLowerCase() ? 1 : 0;
-  const magnitude1 = Math.sqrt(vector1.category.length );
-  const magnitude2 = Math.sqrt(vector2.category.length);
+  // const dotProduct = vector1.category.toLowerCase() === vector2.category.toLowerCase() ? 1 : 0;
+  // const magnitude1 = Math.sqrt(vector1.category.length );
+  // const magnitude2 = Math.sqrt(vector2.category.length);
 
   return dotProduct / (magnitude1 * magnitude2);
 }

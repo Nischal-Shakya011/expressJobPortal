@@ -66,7 +66,7 @@ const ProfileSchema = new Schema({
       },
 
       experience: {
-        type: Number,
+        type: String,
       },
       
       skills: {
