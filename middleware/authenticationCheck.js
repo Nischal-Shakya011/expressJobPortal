@@ -5,7 +5,7 @@ function authenticationCheck(req, res, next) {
 
     let token = req.headers?.authorization?.split(" ")[1]
 
-    let user = null;
+    let user = null; 
 
     try {
         user = jwt.verify(token, process.env.JWT_SECRET_KEY);
