@@ -22,7 +22,6 @@
 //     // Return the recommended popular jobs as a response
 //     res.status(200).json({ popularJobs });
 
-
 // // Function to calculate popularity-based job recommendations
 // const popularityRecommendation = async () => {
 
@@ -46,7 +45,7 @@
 // module.exports={
 //     popularityBasedRecommendation
 // }
-const Job = require('../model/Job');
+const Job = require("../model/Job");
 
 const popularityBasedRecommendation = async (req, res, next) => {
   try {
